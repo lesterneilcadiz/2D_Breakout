@@ -78,7 +78,7 @@ function update() {
     context.fillRect(player.x, player.y, player.width, player.height);
 
     // ball
-    context.fillStyle = "white";
+    context.fillStyle = "red";
     ball.x += ball.velocityX;
     ball.y += ball.velocityY;
     context.fillRect(ball.x, ball.y, ball.width, ball.height);
@@ -114,13 +114,13 @@ function update() {
             if (topCollision(ball, block) || bottomCollision(ball, block)) {
                 block.break = true;     // block is broken
                 ball.velocityY *= -1;   // flip y direction up or down
-                score += 100;
+                score += 1;
                 blockCount -= 1;
             }
             else if (leftCollision(ball, block) || rightCollision(ball, block)) {
                 block.break = true;     // block is broken
                 ball.velocityX *= -1;   // flip x direction left or right
-                score += 100;
+                score += 1;
                 blockCount -= 1;
             }
             context.fillRect(block.x, block.y, block.width, block.height);
@@ -129,7 +129,7 @@ function update() {
 
     //next level
     if (blockCount == 0) {
-        score += 100*blockRows*blockColumns; //bonus points :)
+        score += 1*blockRows*blockColumns; //bonus points :)
         blockRows = Math.min(blockRows + 1, blockMaxRows);
         createBlocks();
     }
